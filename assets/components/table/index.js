@@ -22,18 +22,13 @@ const DataTable = () => {
     const [filters, setFilters] = useState([]);
 
     useEffect(() => {
-        if(AllMusic.getMusicList()){
-            AllMusic.setMusicList(AllMusic.getMusicList());
-        }else {
-            AllMusic.toggleLoading();
-            axios('/api/music')
-                .then(res => {
-                    AllMusic.setMusicList(res.data);
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        }
+        axios('/api/music')
+            .then(res => {
+                AllMusic.setMusicList(res.data);
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }, []);
 
     const tableInstance = useTable({
@@ -111,7 +106,7 @@ const DataTable = () => {
                 <div className="card">
                     <h5 className="card-header">Фильтр</h5>
                     <div className="card-body">
-                        <Filter filters={filters} />
+                        <Filter filters={filters}/>
                     </div>
                 </div>
             </div>

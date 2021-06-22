@@ -20,7 +20,7 @@ const FilterView = ({ column: { filterValue, setFilter, preFilteredRows, id } })
       onChange={e => {
         setFilter(e.target.value || undefined);
       }}
-      className="custom-select custom-select-lg mb-3"
+      className="custom-select mb-3"
     >
       <option value="">Все</option>
       {options.map((option, i) => (
