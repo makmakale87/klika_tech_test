@@ -20,6 +20,7 @@ import {observer} from 'mobx-react';
 const DataTable = () => {
     const columns = useMemo(() => COLUMNS, []);
     const [filters, setFilters] = useState([]);
+    const [currentPageSize, setCurrentPageSize] = useState(10);
 
     useEffect(() => {
         axios('/api/music')
@@ -96,7 +97,11 @@ const DataTable = () => {
                                 canNextPage={canNextPage}
                                 nextPage={nextPage}
                             />
-                            <PageSize setPageSize={setPageSize}/>
+                            <PageSize
+                                setPageSize={setPageSize}
+                                currentPageSize={currentPageSize}
+                                setCurrentPageSize={setCurrentPageSize}
+                            />
                         </div>
                     </div>
                 </div>
